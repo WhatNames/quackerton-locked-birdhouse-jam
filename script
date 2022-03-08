@@ -1,0 +1,253 @@
+# The script of the game goes in this file.
+
+##characters
+image catasleep = "catasleep.png"
+image catawake = "catawake.png"
+image dog = "dog.png"
+image owls = "owls.png"
+
+##images that display in the bottom frame
+image btm_beach = "btm_beach.png"
+image btm_bushes = "btm_bushes.png"
+image btm_floral = "btm_floral.png"
+image btm_keys = "btm_keys.png"
+image btm_piano = "btm_piano.png"
+image btm_pianokeys = "btm_pianokeys.png"
+
+##images that display in the left frames
+image left_talltree = "left_talltree.png"
+image leftbtm_berries = "leftbtm_berries.png"
+image leftbtm_floral = "leftbtm_floral.png"
+image leftbtm_foliage = "leftbtm_foliage.png"
+image leftbtm_waves = "leftbtm_waves.png"
+image lefttop_floralblue = "lefttop_floralblue.png"
+image lefttop_horn = "lefttop_horn.png"
+image lefttop_waves = "lefttop_waves.png"
+
+##images that display in the right frame
+image right_floral = "right_floral.png"
+image right_tree = "right_tree.png"
+image right_waves = "right_waves.png"
+
+##endcard
+image end = "end_label.png"
+
+
+define dissolvelong = Dissolve(1.25)
+define dissolvemedium = Dissolve(0.75)
+
+
+##open dyslexic font support
+#if persist.dyslexic_font is None:
+#    persistent.dyslexic_font = False
+
+
+###this makes the quick text bleep sound play while a character is speaking, theorettically...
+init python:
+    speaking = None
+    def while_speaking(narrator, interact=True, **kwargs):
+        if not interact:
+            return
+
+        if speaking == "show_done":
+            renpy.sound.play("quick_1.ogg", loop=True)
+        else:
+            renpy.sound.stop()
+###maybe using this
+define narrator = nvl_narrator
+###    config.all_character_callbacks renpy.sound.play ("quick_1.ogg"):
+#    nvl clear
+
+
+label start:
+    ##A01
+    scene bg
+    with fade
+    play music "audio/Harp.ogg" fadein 4.0
+    "When I was a young duck, I lived with many dear friends. One day, we received terrible news: Miss Augustine had passed."
+    "She was a bird like no other, a pillar in our community. We all decided to come together to celebrate her life."
+    nvl clear
+    "We’d share memories, feast, and laugh with one another in her honor. Max the dog, Champagne the cat, Honey and Hermine the owl twins, and myself, would have a celebration to remember."
+    "However, there was a significant problem."
+    nvl clear
+    show dog with dissolvemedium
+    "Sweet, darling Max, would not leave the doormat in front of Augustine’s house."
+    stop music fadeout 2.0
+    nvl clear
+
+label A02:
+    play music "audio/lonelywitch.ogg" fadein 4.0
+    show left_talltree
+    with dissolvemedium
+    show btm_bushes
+    with dissolve
+    "It had been an entire night, and then half a day after that. Max warmed the doormat in front of the birdhouse, staring out at the clearing with woeful eyes. I’d asked him if he needed anything when I checked on him in the morning, ‘No, thank you Quacks.’ He hadn’t moved as far as I had observed. It was about time to check in again."
+    "“Max.” I watched his ear perk at my voice. “Maxregard.” I laid a wing across his back. “We’re swiftly approaching our start time. Are you going to join us?”"
+    "He didn’t answer at first, so I waited. He pulled in a deep breath, “Is it set up?”"
+    "“I think the twins are rehearsing and the cake is almost ready.”"
+    "Max hummed out a mournful note. “If it’s all the same to you, I’ll stay. For now.”"
+    "I furrowed my brows as I searched for what to say. “Maxy? What are you waiting for?” The air stilled around us, as if the clearing itself was holding its breath."
+    "Max sighed. “I don’t want to celebrate without Augustine’s photo albums. But,” he sighed again, “I’m locked out.” He looked at me with those mournful eyes and I knew that I couldn’t move him for the world. He rested his head on his paws once more, staring up at the birdhouse."
+    "“I’m going to check on Champagne and the twins. If they’re all ready, will you come, even without…” It felt bad to even say, so I did not."
+    "“Hmmmm.”"
+    "I frowned, worried."
+    "“If they’re ready I’ll come.”"
+    "Thank goodness."
+    "“Okay. I’m going to make sure everyone is prepared. I’ll see you soon Max.” Max resettled on the doormat, and I waddled off to shepherd the rest of our friends towards the celebration."
+    stop music fadeout 2.0
+    nvl clear
+
+label C01:
+    scene bg
+    with fade
+###need a top left item
+    show right_tree
+    with dissolve
+    show leftbtm_foliage
+    with dissolvemedium
+    show btm_pianokeys
+    with dissolvelong
+    play music "audio/HouseInaForestLoop.ogg" fadein 4.0
+    "Champagne was a delightfully talented chef, always experimenting with what ingredients they used. They had a particular talent for discovering tasty flavor combinations that her friends would adore."
+    "I thought she had been baking all day for this celebration, and yet I found her atop the piano, blissfully asleep."
+
+label C02:
+    show catasleep with dissolvemedium
+    "“Champagne,” I tried, my voice a whisper. Not even a single whisker flicked. The wind whistled a jaunty tune between tree branches, leaving the cat on her perch upon the piano, undisturbed."
+    "“Champagne.” The feline didn’t budge! Hmph! Well, if that was how it was going to be…"
+    "“Champagne I am going to reintroduce you to my watering can should you pretend to slumber any longer.” With this, Champagne sat up with a sigh."
+    "“Who says I was pretending?” Their voice lolled out of their mouth with a syrupy purr rumbling beneath it."
+    "I was familiar enough with her to know that her ears flicked and whiskers twitched whenever she was actually sleeping, which was precisely why I knew to pester her plainly when she lay still. But of course, I couldn’t tell her that."
+    "“Call it intuition,” I said, tipping my bill up. I could see it in her eyes; the cat thought me quite petulant."
+    "Fortunately the feeling was mutual."
+    "“Max said he will not budge from the doorstep unless the party is set up. Is the food ready?”"
+    "Champagne yawned. “I suppose we’ll be waiting a season then,” they said, and promptly curled back up in a ball."
+    "I let out a disgruntled honk of confusion before I could stop myself. “A season? Heavens why! How long does it take to bake a cake?”"
+    nvl clear
+    "One eye lazily opened to judge me. “I need berries to finish the cake. They are up there.” She flicked an ear. I looked up."
+    show leftbtm_berries
+    with dissolve
+    "At the point where the trunk began to break up, a clutch of berries congregated in the crook of two branches, their vine swirled around the trunk."
+    hide leftbtm_berries
+    with dissolvelong
+    "“You have claws. Climb up and get them if you need them,” I said without thinking, because I am a fool."
+    "Champagne’s irises narrowed to slits. “The last time I climbed anything taller than the gardening shed, it took you lot nine hours to even find me, not to mention the three it took you to get me down.”"
+    "I stamped at the dirt. It would have been much easier if they hadn’t been hissing and clawing the entire way down… No need to rile them up now."
+    "“Would you be able to complete the cake if I get you those berries?”"
+    "“I’d like to see you even attempt to get that height.” She knew that I was a weak flier, but still, it was rude to say to my face."
+    nvl clear
+    "“I’m not– Hmph. Fine, we’ll wait for you to get the berries,” I said. She closed her judgemental eye again, ready to pretend to sleep. “Do you know where the Owl Twins are?” Champagne’s ears flattened immediately. So she did."
+    "“They were here making a ruckus earlier, but I was occupied with more important activities.”"
+    "This could have meant anything from cooking to bathing to solving elaborate puzzles. I opened my beak to ask where they’d gone, but was interrupted before I could begin."
+    "“What I did hear is that they were planning to continue making a ruckus on the rocks.”"
+    stop music fadeout 4.0
+    "I ruffled my feathers. “Thank you Champagne, rest up. I hope your berries grow down quickly.” And with that, I waddled to the rocks, the cat’s purr following in my wake."
+    nvl clear
+
+label H01:
+    scene bg with fade
+    play music "audio/one.mp3" fadein 4.0
+    show leftbtm_waves
+    with dissolve
+    show lefttop_waves
+    with dissolvemedium
+    show btm_beach
+    with dissolve
+    "The rocks were a collection of, well, rocks along the coast. Waves crashed over them constantly, making them the perfect place to create a hullabaloo, which is precisely where I found the owls."
+    "“LOUDER! LOUDER!!” I could hear Honey’s voice before I could see him. Then I heard a sound vaguely resembling a fog horn choking on a grape."
+    show owls with dissolve
+    show lefttop_horn with dissolvemedium
+    "The owl twins were notoriously argumentative and affable, but that day they seemed to be lacking in affability. Hermine was playing the horn, but what was throwing them off was their brother placing his entire head into the other end."
+    nvl clear
+    "“IF YOU DON’T NAIL THE BRIDGE THEN WE’LL NEVER GET THE SONG RIGHT,” Honey shouted down the barrel. Hermine winced."
+    "“honey i can’t get the timing right without your part. it’s a duet,” they countered."
+    "“I KNOW IT’S A DUET.” Honey promptly pulled his head out of the horn and tackled Hermine. I rushed in to avoid a brotherly brawl."
+    nvl clear
+    "Flapping my wings as mightily as I could manage, I hollered. “Whoa there! What’s wrong, you two?? I was under the impression you’d be practicing out here, not wrestling with a trumpet.”"
+    "“horn,” Hermine corrected under their breath."
+    "“I CAN’T PRACTICE MY PART RIGHT NOW SO I’M MAKING DUE.”"
+    "“honey you are so loud rn it’s lowkey highkey overwhelming.”"
+    "“WHAT DID YOU SAY?”"
+    "“Honey,” I interjected, “Why can’t you practice your part?”"
+    "“CHAMPAGNE SAID THEY DIDN’T WANT ME BANGING ON THE PIANO. SHE SAID IT WAS INTERRUPTING HER SLEEP.”"
+    "Ah. I had discovered the sticking point."
+    "“No more of this, I’m solving both of your problems, right now.” I spun on my heel."
+    "“really?” Hermine dumped the horn onto their brother."
+    nvl clear
+    "I ushered them both to the clearing in the woods."
+    nvl clear
+
+label H02:
+    scene bg
+    show owls
+    show btm_pianokeys
+    show right_tree
+    show leftbtm_foliage
+    show lefttop_horn
+    with fade
+    "Upon reentering the clearing, I noticed that Champagne had sprawled across a smattering of sunbeams on the top of the piano."
+    "“WAKE UP BRAT CAT.” Honey hollered, on sight. Champagne’s hackles raised instantly."
+    show catawake with dissolve
+    "I stood myself in between the two parties with a particularly unflattering squawk, “No! *ahem* No. Both of you stop that. I have a solution to both of your problems,” I turned to the owl twins, “Honey, you need the piano to practice your duet for our memorial, is that right?”"
+    "“HMPH!”"
+    "“yes that’s right.”"
+    "I turned to the cat, “Champagne, you need those berries up there for your recipe, correct?” She nodded, though she looked as perplexed as a cat possibly could while still loafing. “The solution is simple. Honey, would you please fly up and get a bunch of those berries?”"
+    "“I WOULD NOT! I THINK THAT–”"
+    show leftbtm_berries
+    with dissolve
+    "In a wink, Hermine flapped their powerful wings and descended with the berries in tow. “got it.”"
+    "“Thank you,” I said."
+    "I received a pleased ‘hoo’ in response. Hermine gently preened themself to avoid looking at Honey."
+    "“I’ll be off then,” Champagne stretched and leapt from the piano. Honey puffed out his chest but said nothing."
+    nvl clear
+    stop music fadeout 4.0
+    "“Wait,” I knew I couldn’t leave things like this. “Wait, Champagne, please. Honey and Hermine too.” Thankfully, my friends complied."
+    "“I know that this is hard. I miss Augustine. I know you miss Augustine. She was wonderful.”"
+    "“IS WONDERFUL.”"
+    "“She is wonderful.” I amended, “And we are all hurt, we’re hurting. I can’t make you, and even if I could I would not, but I am asking. Please, be kind to one another. Be gentle. I have a hard time even saying how much I miss her and– And I–” I had to cut myself off."
+    play music "audio/Contemplation.mp3" fadein 6.0
+    "I shut my eyes tight, focusing on taking in one deep breath and holding it. I felt a bump of feathers against my left wing, then fur on my right. Then two broad wings wrapped around the three of us."
+    "“I’m sorry ducky,” Champagne said into my wing, and if I didn’t know her I would have missed when she started rumbling beside me, her volume almost imperceptible."
+    "“us too,” Hermine said, Honey nodding into my neck."
+    nvl clear
+    "We stayed there. For a while."
+    "I took one more deep breath in, then pulled away. I felt tears brimming in my eyes, but I smiled. My family was here. “I’m going to check on Max. He’s been staring at Augustine’s birdhouse since last night.”"
+    "“oh no. max…”"
+    "“Do you need any help?” Champagne asked."
+    "I shook my head. “No, so long as you can finish your cake and they can finish their music.” Honey played a few notes. “I’ll be all right. I think Max needs someone now though, I’ve left him long enough.”"
+    "As I waddled out of the clearing, Honey called after, “GIVE A SHOUT IF YOU NEED US.”"
+    "“I will.”"
+    nvl clear
+
+label A03:
+    scene bg with fade
+    show left_talltree
+    with dissolvemedium
+    show btm_bushes
+    with dissolve
+    show dog with dissolvelong
+    "Max was exactly where I left him. If I hadn’t seen his breathing, I’d have thought he was a statue."
+    stop music fadeout 10.0
+    "“Maxregard, we’re ready.” He offered me a doleful expression over his shoulder. With a grunt, he stood, and I hugged him close. “It’s okay Maxy, it’s okay.” I patted his back as he snuffled into my shoulder. “Let’s go, now.”"
+    "And the funniest thing happened as I shepherded him away. My webbed foot caught the doormat, and it jingled."
+    play music "audio/SaltMarshBirds.mp3" fadein 6.0
+    "Wait. Jingled?"
+    "Max and I lifted the mat, and, of course, it was so obvious in hindsight."
+    show btm_keys with dissolve
+    "Augustine’s keys."
+    "Max and I looked at one another, and for the first time in far too long, I saw his tail start to wag."
+    nvl clear
+
+label end:
+    scene black
+    with fade
+    scene ducks
+    with dissolvelong
+    pause (1.25)
+    show end with dissolvelong
+    pause
+    scene black with dissolvemedium
+    stop music fadeout 2.0
+    pause (2.0)
+
+    return
